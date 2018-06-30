@@ -4,10 +4,12 @@ import readCSV as rd
 import at_index as at
 import error as er
 import sys
+import judge as jd
+import make
 
 '''
 
-$ python main.py (-t or -m) (file name)
+$ python main.py (-t or -m) (file name or percent)
 
 $ pip show pandas
 Version : 0.23.1
@@ -20,6 +22,7 @@ root/
 ├ readCSV.py        //生徒CSVデータをディレクトリから検索し、戻り値で渡す
 ├ make.py       //生徒のデータから教師データを作成する
 ├ error.py      //エラーメッセージを返す
+├ judge.py      //生徒データの正誤判断、DataFrameで返す
 ├ teacher_data/       //教師データがある場合はここにおく
 │ └teacher.csv
 └ csv/      //生徒データは全てここにおく
@@ -41,8 +44,9 @@ if len(args) == 1:
     elif student_name == 1 :
         print("生徒データが一件しかありません")
     else :
+        df_list = jd.judge(student_name)
         print("教師データなしで実行します..")
-        df = cv.Conversion.conversion(student_name)
+        df = cv.Conversion.conversion(student_name,df_list)
         at.at_index(df)
 elif len(args) == 2:
     #コマンドライン引数が渡された場合
@@ -57,11 +61,22 @@ elif len(args) == 2:
             elif student_name == 1 :
                 print("生徒データが一件しかありません")
             else :
+                df_list = jd.judge(student_name)
                 print("正解データありで実行します..")
-                df = cv.Conversion.conversion1(student_name,"teacher.csv")
+                df = cv.Conversion.conversion1(student_name,df_list,"teacher.csv")
                 at.at_index(df)
     elif (args[1] == "--make" or args[1] == "-m") :
-        print("正解データを作成して実行します..")
+        student_name = rd.readCSV()
+        if student_name == 0 :
+            print("生徒のCSVデータが存在しません")
+        elif student_name == 1 :
+            print("生徒データが一件しかありません")
+        else :
+            df_list = jd.judge(student_name)
+            make.make(student_name,df_list,80)
+            df = cv.Conversion.conversion1(student_name,df_list,"teacher.csv")
+            print("正解データを正答率80%で作成して実行します..")
+            at.at_index(df)
     else :
         print(er.error(1))
 elif len(args) == 3 :
@@ -77,11 +92,22 @@ elif len(args) == 3 :
             elif student_name == 1 :
                 print("生徒データが一件しかありません")
             else :
+                df_list = jd.judge(student_name)
                 print("正解データを"+args[2]+"で実行します..")
-                df = cv.Conversion.conversion1(student_name,teacher_data)
+                df = cv.Conversion.conversion1(student_name,df_list,eacher_data)
                 at.at_index(df)
     elif (args[1] == "--make" or args[1] == "-m") :
-        print("正解データを"+args[2]+"という名前で作成して実行します..")
+        student_name = rd.readCSV()
+        if student_name == 0 :
+            print("生徒のCSVデータが存在しません")
+        elif student_name == 1 :
+            print("生徒データが一件しかありません")
+        else :
+            df_list = jd.judge(student_name)
+            make.make(student_name,df_list,int(args[2]))
+            df = cv.Conversion.conversion1(student_name,df_list,"teacher.csv")
+            print("正解データを正答率"+str(args[2])+"%で作成して実行します..")
+            at.at_index(df)
     else :
         print(er.error(1))
 else :

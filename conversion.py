@@ -12,28 +12,9 @@ CSVの形式は、ヘッダー一行、インデックス一行、結線があ�
 class Conversion :
 
     #教師データなし
-    def conversion(student_name):
+    def conversion(student_name,df_list):
 
         std_num = len(student_name)
-
-        '''
-        CSV読み込み
-        '''
-
-        df_list = []
-        for a in student_name:
-            df_list.append(pd.read_csv("csv/"+a,index_col=0))
-
-        '''
-        CSVの形式を確認
-        '''
-
-        index_length = len(df_list[0])
-        columns_length = len(df_list[0].columns)
-        for i in df_list:
-            if ( index_length != columns_length or index_length != len(i) or columns_length != len(i.columns)):
-                print("生徒データに誤りがあります")
-                sys.exit()
 
         '''
         読み込んだCSVの値を格納するリスト
@@ -98,27 +79,8 @@ class Conversion :
         return df2
 
     #教師データあり
-    def conversion1(student_name,teacher_data):
+    def conversion1(student_name,df_list,teacher_data):
         std_num = len(student_name)
-
-        '''
-        CSV読み込み
-        '''
-
-        df_list = []
-        for a in student_name:
-            df_list.append(pd.read_csv("csv/"+a,index_col=0))
-
-        '''
-        CSVの形式を確認
-        '''
-
-        index_length = len(df_list[0])
-        columns_length = len(df_list[0].columns)
-        for i in df_list:
-            if ( index_length != columns_length or index_length != len(i) or columns_length != len(i.columns)):
-                print("生徒データに誤りがあります")
-                sys.exit()
 
         dft = pd.read_csv("teacher_data/"+teacher_data,index_col=0)
 
