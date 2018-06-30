@@ -83,7 +83,7 @@ elif len(args) == 3 :
     #コマンドライン引数と教師データの指定があった場合
     if(args[1] == "--teacher" or args[1] == "-t"):
         teacher_data = rd.spec_teacher(args[2])
-        if len(teacher_data) == 0:
+        if teacher_data == 0:
             print(args[2]+"が存在しません")
         else :
             student_name = rd.readCSV()
@@ -94,7 +94,7 @@ elif len(args) == 3 :
             else :
                 df_list = jd.judge(student_name)
                 print("正解データを"+args[2]+"で実行します..")
-                df = cv.Conversion.conversion1(student_name,df_list,eacher_data)
+                df = cv.Conversion.conversion1(student_name,df_list,teacher_data)
                 at.at_index(df)
     elif (args[1] == "--make" or args[1] == "-m") :
         student_name = rd.readCSV()

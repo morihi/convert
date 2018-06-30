@@ -37,7 +37,7 @@ def readCSV():
 
 #指定ない場合の教師データのCSV確認
 def readTeacher():
-    path = './teacher_data/teacher.csv'
+    path = './csv/teacher_data/teacher.csv'
     files = []
     files = glob.glob(path)
     return len(files)
@@ -50,7 +50,7 @@ def readTeacher():
 def spec_teacher(teacher) :
     a = teacher.split('.')
     if len(a) == 1:
-        path = './teacher_data/'+teacher+'.csv'
+        path = './csv/teacher_data/'+teacher+'.csv'
         files =[]
         files = glob.glob(path)
         if len(files) != 0:
@@ -59,7 +59,7 @@ def spec_teacher(teacher) :
         else :
             return 0
     else:
-        path = './teacher_data/'+teacher
+        path = './csv/teacher_data/'+teacher
         files =[]
         files = glob.glob(path)
         if len(files) != 0:

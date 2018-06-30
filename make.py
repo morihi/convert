@@ -58,6 +58,6 @@ def make(student_name,df_list,per) :
     columns = list_columns,
     index   = list_index
     )
-    print(df)
+    #print(df)
 
-    df.to_csv('./teacher_data/teacher.csv',encoding="shift-jis")
+    df.to_csv('./csv/teacher_data/teacher.csv',encoding="shift-jis")
