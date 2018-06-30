@@ -19,17 +19,18 @@ root/
 ├ main.py
 ├ conversion.py     //生徒データを集約したDataFrameへ変換し、返す
 ├ at_index.py      //生徒データが集約されたcsvから注意係数を算出し、SP表.csv出力
-├ readCSV.py        //生徒CSVデータをディレクトリから検索し、戻り値で渡す
+├ readCSV.py        //生徒,教師CSVデータをディレクトリから検索し、戻り値で渡す
 ├ make.py       //生徒のデータから教師データを作成する
 ├ error.py      //エラーメッセージを返す
 ├ judge.py      //生徒データの正誤判断、DataFrameで返す
-├ teacher_data/       //教師データがある場合はここにおく
-│ └teacher.csv
 └ csv/      //生徒データは全てここにおく
-   ├生徒A.csv
-   ├生徒B.csv
-   ├...
-   └生徒X.csv
+   ├ 生徒A.csv
+   ├ 生徒B.csv
+   ├ ...
+   ├ 生徒X.csv
+   ├ SP/        //SP表がここに出力される
+   └ teacher_data/       //教師データがある場合はここにおく
+      └teacher.csv
 
 '''
 

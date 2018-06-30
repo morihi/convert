@@ -123,5 +123,5 @@ def at_index(csv):
     #print(np.round(np.array(tyuikeisu),2))
     csv["注意係数"] = np.round(np.array(tyuikeisu),2)
     #print(csv)
-    csv.to_csv('./csv/SP/SP表.csv',encoding="SHIFT-JIS")
+    csv.to_csv('../csv/SP/SP表.csv',encoding="SHIFT-JIS")
     print("######################"+"\n"+" conversion complete!"+"\n"+"######################")
