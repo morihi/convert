@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import numpy as np
 import pandas as pd
 
@@ -60,4 +62,4 @@ def make(student_name,df_list,per) :
     )
     #print(df)
 
-    df.to_csv('../csv/teacher_data/teacher.csv',encoding="shift-jis")
+    df.to_csv('./csv/teacher_data/teacher.csv',encoding="shift-jis")

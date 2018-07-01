@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import glob
 import pandas as pd
 
@@ -13,7 +15,7 @@ CSVディレクトリに存在するCSVファイルを自動取得
 #生徒のCSV読み込み
 def readCSV():
 
-    path = '../csv/*.csv'
+    path = './csv/*.csv'
     files = []
     files = glob.glob(path)
     student_name=[]
@@ -37,7 +39,7 @@ def readCSV():
 
 #指定ない場合の教師データのCSV確認
 def readTeacher():
-    path = '../csv/teacher_data/teacher.csv'
+    path = './csv/teacher_data/teacher.csv'
     files = []
     files = glob.glob(path)
     return len(files)
@@ -50,7 +52,7 @@ def readTeacher():
 def spec_teacher(teacher) :
     a = teacher.split('.')
     if len(a) == 1:
-        path = '../csv/teacher_data/'+teacher+'.csv'
+        path = './csv/teacher_data/'+teacher+'.csv'
         files =[]
         files = glob.glob(path)
         if len(files) != 0:
@@ -59,7 +61,7 @@ def spec_teacher(teacher) :
         else :
             return 0
     else:
-        path = '../csv/teacher_data/'+teacher
+        path = './csv/teacher_data/'+teacher
         files =[]
         files = glob.glob(path)
         if len(files) != 0:

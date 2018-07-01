@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import pandas as pd
 
 '''
@@ -81,7 +83,7 @@ class Conversion :
     def conversion1(student_name,df_list,teacher_data):
         std_num = len(student_name)
 
-        dft = pd.read_csv("../csv/teacher_data/"+teacher_data,index_col=0)
+        dft = pd.read_csv("./csv/teacher_data/"+teacher_data,index_col=0)
 
         '''
         CSVの形式を確認

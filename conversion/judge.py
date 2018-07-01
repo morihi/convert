@@ -1,4 +1,6 @@
+#! /usr/bin/env python
 # -*- coding: utf-8 -*-
+
 import pandas as pd
 
 '''
@@ -18,7 +20,7 @@ def judge(student_name) :
 
     df_list = []
     for a in student_name:
-        df_list.append(pd.read_csv("../csv/"+a,index_col=0))
+        df_list.append(pd.read_csv("./csv/"+a,index_col=0))
 
     '''
     CSVの形式を確認
