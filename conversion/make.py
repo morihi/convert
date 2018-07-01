@@ -4,25 +4,35 @@
 import numpy as np
 import pandas as pd
 
-'''
+"""
 
 生徒ファイル名、パーセントを引数に持ち、
 指定されたパーセントで正解データを作成し、teacher_dataに出力する
 
-'''
+"""
 
-def make(student_name,df_list,per) :
+def make(path,student_name,df_list,per) :
+
+    """
+    生徒ファイル名、パーセントを引数に持ち、
+    指定されたパーセントで正解データを作成し、teacher_dataに出力する
+
+    Parameters
+    ----------
+    path : str
+        出力したいディレクトリまでの絶対パス
+    student_name : list of str
+        生徒名を格納したリスト
+    df_list : list of DataFrame
+        生徒の結線データを格納したリスト
+    per : int
+        指定されたパーセンテージを基準に正解データを作成する
+    """
 
     std_num = len(student_name)
     df_num = len(df_list[0].columns)
     d = []
     f = []
-
-    '''
-    print(student_name)
-    print(df_list[0].values[2])
-    print(per)
-    '''
 
     for j in range(df_num):
         for k in range(std_num):
@@ -60,6 +70,5 @@ def make(student_name,df_list,per) :
     columns = list_columns,
     index   = list_index
     )
-    #print(df)
 
-    df.to_csv('./csv/teacher_data/teacher.csv',encoding="shift-jis")
+    df.to_csv(path+'/teacher_data/made_teacher.csv',encoding="shift-jis")

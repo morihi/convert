@@ -5,11 +5,11 @@ import pandas as pd
 import json
 import sys
 
-'''
+"""
 
 firebaseのJSONからCSVデータへの変換
 
-'''
+"""
 
 list_size = 8
 

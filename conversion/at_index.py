@@ -4,18 +4,26 @@
 import pandas as pd
 import numpy as np
 
-'''
+"""
 
 引数のDataFrameから注意係数を算出する
 
-'''
+"""
 
-def at_index(csv):
+def at_index(path,csv):
 
-    '''
+    """
     conversion.pyで出力したSP表を読み込む
     SP表.csvはshift-jis
-    '''
+
+    Parameters
+    ----------
+    path : str
+        出力したいディレクトリまでの絶対パス
+    csv : DataFrame
+        SP表にするデータ
+    """
+    
     #csv = pd.read_csv("SP表.csv",encoding="SHIFT-JIS",index_col=0)
     drop_list = []       #全て0の列を格納する
     #print(csv[[0]])
@@ -125,5 +133,7 @@ def at_index(csv):
     #print(np.round(np.array(tyuikeisu),2))
     csv["注意係数"] = np.round(np.array(tyuikeisu),2)
     #print(csv)
-    csv.to_csv('./csv/SP/SP表.csv',encoding="SHIFT-JIS")
+
+    csv.to_csv(path+'/SP/SP表.csv',encoding="SHIFT-JIS")
+
     print("######################"+"\n"+" conversion complete!"+"\n"+"######################")

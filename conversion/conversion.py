@@ -3,17 +3,32 @@
 
 import pandas as pd
 
-'''
+"""
 
 各生徒のチャートCSVファイルから,構造図の結果をSP表用にまとめたCSVを出力する。
 CSVの形式は、ヘッダー一行、インデックス一行、結線がある場合1,ない場合0とする。
 
-'''
+"""
 
 class Conversion :
 
-    #教師データなし
     def conversion(student_name,df_list):
+
+        """
+        生徒のデータを集め、SP表にするための一つのDataFrameに変換する
+
+        Parameters
+        ----------
+        student_name : list of str
+            生徒名を格納したリスト
+        df_list : list of DataFrame
+            生徒の結線データを格納したリスト
+
+        Returns
+        -------
+        df2 : DaraFrame
+            生徒データを集約してSP表用にまとめたDataFrame
+        """
 
         std_num = len(student_name)
 
@@ -64,8 +79,6 @@ class Conversion :
                 else:
                     list_columns.append(str(a)+"→"+str(b))
 
-        #print(list_name)
-        #print(cvs_list)
         '''
         作成したリストをCSVデータフレームに変換
         '''
@@ -75,33 +88,29 @@ class Conversion :
         index = list_index
         )
 
-        #print(df2)
-        #df2.to_csv('SP表.csv',encoding="SHIFT-JIS")
         return df2
 
-    #教師データあり
-    def conversion1(student_name,df_list,teacher_data):
+        
+    def cnv_tec(student_name,df_list,dft):
+
+        """
+        生徒のデータを集め、教師データと比較して一つのDataFrameに変換する
+
+        student_name : list of str
+            生徒名を格納したリスト
+        df_list : list of DataFrame
+            生徒の結線データを格納したリスト
+        dft : DaraFrame
+            教師データのDataFrame
+
+        Returns
+        -------
+        df2 : DaraFrame
+            教師データと比較した生徒データを集約してSP表用にまとめたDataFrame
+        """
+
         std_num = len(student_name)
 
-        dft = pd.read_csv("./csv/teacher_data/"+teacher_data,index_col=0)
-
-        '''
-        CSVの形式を確認
-        '''
-
-
-        if ( len(dft) != len(dft.columns)):
-            print("教師データの行数と列数が一致しません")
-            sys.exit()
-
-        '''
-        print(len(df_list[0]))
-        print(len(df_list[1]))
-        print(len(dft))
-        print(len(df_list[0].columns))
-        print(len(dft.columns))
-        print(df_list[0].values[1])
-        '''
 
         '''
         読み込んだCSVの値を格納するリスト
