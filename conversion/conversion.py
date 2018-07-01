@@ -90,7 +90,7 @@ class Conversion :
 
         return df2
 
-        
+
     def cnv_tec(student_name,df_list,dft):
 
         """

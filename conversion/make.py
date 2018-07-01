@@ -27,6 +27,11 @@ def make(path,student_name,df_list,per) :
         生徒の結線データを格納したリスト
     per : int
         指定されたパーセンテージを基準に正解データを作成する
+
+    Returns
+    -------
+    df : DaraFrame
+        指定されたパーセントで作成された教師データ
     """
 
     std_num = len(student_name)
@@ -71,4 +76,6 @@ def make(path,student_name,df_list,per) :
     index   = list_index
     )
 
-    df.to_csv(path+'/teacher_data/made_teacher.csv',encoding="shift-jis")
+    df.to_csv(path+'/teacher_data/'+str(per)+'%_teacher.csv',encoding="shift-jis")
+
+    return df

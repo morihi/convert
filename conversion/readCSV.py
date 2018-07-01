@@ -115,7 +115,7 @@ def spec_teacher(path,teacher) :
         else :
             return 0
 
-def read_std_csv(path,student_name):
+def get_std_df(path,student_name):
 
     """
     引数で渡されたcsvファイル名のリストをDataFrame型に変換して返す
@@ -139,7 +139,7 @@ def read_std_csv(path,student_name):
 
     return df_list
 
-def read_tec_csv(path,file_name):
+def get_tec_df(path,file_name):
 
     """
     引数で渡されたcsvファイルをDataFrame型に変換して返す

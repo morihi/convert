@@ -58,7 +58,7 @@ if len(args) == 1:
     elif student_name == 1 :
         print("生徒データが一件しかありません")
     else :
-        df_list = conversion.rd.read_std_csv(path,student_name)
+        df_list = conversion.rd.get_std_df(path,student_name)
         if conversion.jd.judge(df_list) :
             print("教師データなしで実行します..")
             df = conversion.cv.Conversion.conversion(student_name,df_list)
@@ -78,9 +78,9 @@ elif len(args) == 2:
             elif student_name == 1 :
                 print("生徒データが一件しかありません")
             else :
-                df_list = conversion.rd.read_std_csv(path,student_name)
+                df_list = conversion.rd.get_std_df(path,student_name)
                 if conversion.jd.judge(df_list) :
-                    dft = conversion.rd.read_tec_csv(path,"teacher.csv")
+                    dft = conversion.rd.get_tec_df(path,"teacher.csv")
                     if conversion.jd.judge_tec(dft,df_list):
                         print("正解データありで実行します..")
                         df = conversion.cv.Conversion.cnv_tec(student_name,df_list,dft)
@@ -93,10 +93,9 @@ elif len(args) == 2:
         elif student_name == 1 :
             print("生徒データが一件しかありません")
         else :
-            df_list = conversion.rd.read_std_csv(path,student_name)
+            df_list = conversion.rd.get_std_df(path,student_name)
             if conversion.jd.judge(df_list) :
-                conversion.make.make(path,student_name,df_list,80)
-                dft = conversion.rd.read_tec_csv(path,"made_teacher.csv")
+                dft = conversion.make.make(path,student_name,df_list,80)
                 df = conversion.cv.Conversion.cnv_tec(student_name,df_list,dft)
                 print("正解データを正答率80%で作成して実行します..")
                 conversion.at.at_index(path,df)
@@ -119,10 +118,10 @@ elif len(args) == 3 :
             elif student_name == 1 :
                 print("生徒データが一件しかありません")
             else :
-                df_list = conversion.rd.read_std_csv(path,student_name)
+                df_list = conversion.rd.get_std_df(path,student_name)
                 if conversion.jd.judge(df_list) :
                     print("正解データを"+args[2]+"で実行します..")
-                    dft = conversion.rd.read_tec_csv(path,teacher_data)
+                    dft = conversion.rd.get_tec_df(path,teacher_data)
                     if conversion.jd.judge_tec(dft,df_list):
                         df = conversion.cv.Conversion.cnv_tec(student_name,df_list,dft)
                         conversion.at.at_index(path,df)
@@ -134,10 +133,9 @@ elif len(args) == 3 :
         elif student_name == 1 :
             print("生徒データが一件しかありません")
         else :
-            df_list = conversion.rd.read_std_csv(path,student_name)
+            df_list = conversion.rd.get_std_df(path,student_name)
             if conversion.jd.judge(df_list):
-                conversion.make.make(path,student_name,df_list,int(args[2]))
-                dft = conversion.rd.read_tec_csv(path,"made_teacher.csv")
+                dft = conversion.make.make(path,student_name,df_list,int(args[2]))
                 df = conversion.cv.Conversion.cnv_tec(student_name,df_list,dft)
                 print("正解データを正答率"+str(args[2])+"%で作成して実行します..")
                 conversion.at.at_index(path,df)
